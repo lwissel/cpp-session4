@@ -109,7 +109,7 @@ double Triangle::perimeter() {
 
 double Triangle::area() {
   side();
-	return sqrt(4*a*a*b*b-(a*a+b*b-c*c));
+	return 1./4*sqrt(4*a*a*b*b-(a*a+b*b-c*c)*(a*a+b*b-c*c));
 }
 
 int main ( ) {
