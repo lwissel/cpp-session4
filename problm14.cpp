@@ -34,13 +34,13 @@ class Triangle {
     double getPoint1X();
     double getPoint1Y();
     double getPoint2X();
-    double getPoint2X();
-    double getPoint3Y();
+    double getPoint2Y();
+    double getPoint3X();
     double getPoint3Y();
 
     // More interesting methods
-    double perimeter(Triangle& t);
-    double area(Triangle& t);
+    double perimeter();
+    double area();
 
   private:
     // Data
@@ -76,27 +76,49 @@ Triangle::Triangle(double x1in, double y1in, double x2in, double y2in, double x3
 }
 
 
-double Triangle::perimeter(Triangle& t) {
+double Triangle::getPoint1X() { return pt1x; }
+double Triangle::getPoint1Y() { return pt1y; }
+double Triangle::getPoint2X() { return pt2x; }
+double Triangle::getPoint2Y() { return pt2y; }
+double Triangle::getPoint3X() { return pt3x; }
+double Triangle::getPoint3Y() { return pt3y; }
+
+double Triangle::perimeter() {
 	double ax, ay, bx, by, cx, cy;
 	double a, b, c;
 	
-	ax = t.x1 - t.x2;
-	ay	= t.y1 - t.y2;
+	ax = pt1x - pt2x;
+	ay	= pt1y - pt2y;
 	a = sqrt(ax*ax + ay*ay);
 	
-	bx = t.x2 - t.x3;
-	by	= t.y2 - t.y3;
+	bx = pt2x - pt3x;
+	by	= pt2y - pt3y;
 	b = sqrt(bx*bx + by*by);
 	
-	cx = t.x1 - t.x3;
-	cy	= t.y1 - t.y3;
+	cx = pt1x - pt3x;
+	cy	= pt1y - pt3y;
 	c = sqrt(cx*cx + cy*cy);
 	
 	return a+b+c;
 }
 
-double Triangle::area(Triangle& t) {
-
+double Triangle::area() {
+	double ax, ay, bx, by, cx, cy;
+	double a, b, c;
+	
+	ax = pt1x - pt2x;
+	ay	= pt1y - pt2y;
+	a = sqrt(ax*ax + ay*ay);
+	
+	bx = pt2x - pt3x;
+	by	= pt2y - pt3y;
+	b = sqrt(bx*bx + by*by);
+	
+	cx = pt1x - pt3x;
+	cy	= pt1y - pt3y;
+	c = sqrt(cx*cx + cy*cy);
+	
+	return sqrt(4*a*a*b*b-(a*a+b*b-c*c));
 }
 
 int main ( ) {
