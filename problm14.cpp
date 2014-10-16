@@ -50,6 +50,9 @@ class Triangle {
     double pt2y;
     double pt3x;
     double pt3y;
+
+    double a,b,c;
+    void side();
 };
 
 // The input and output functions are given for you!
@@ -83,9 +86,8 @@ double Triangle::getPoint2Y() { return pt2y; }
 double Triangle::getPoint3X() { return pt3x; }
 double Triangle::getPoint3Y() { return pt3y; }
 
-double Triangle::perimeter() {
+void Triangle::side() {
 	double ax, ay, bx, by, cx, cy;
-	double a, b, c;
 	
 	ax = pt1x - pt2x;
 	ay	= pt1y - pt2y;
@@ -98,26 +100,15 @@ double Triangle::perimeter() {
 	cx = pt1x - pt3x;
 	cy	= pt1y - pt3y;
 	c = sqrt(cx*cx + cy*cy);
-	
+}
+
+double Triangle::perimeter() {
+  side();
 	return a+b+c;
 }
 
 double Triangle::area() {
-	double ax, ay, bx, by, cx, cy;
-	double a, b, c;
-	
-	ax = pt1x - pt2x;
-	ay	= pt1y - pt2y;
-	a = sqrt(ax*ax + ay*ay);
-	
-	bx = pt2x - pt3x;
-	by	= pt2y - pt3y;
-	b = sqrt(bx*bx + by*by);
-	
-	cx = pt1x - pt3x;
-	cy	= pt1y - pt3y;
-	c = sqrt(cx*cx + cy*cy);
-	
+  side();
 	return sqrt(4*a*a*b*b-(a*a+b*b-c*c));
 }
 
