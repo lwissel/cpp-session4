@@ -10,7 +10,7 @@ class Vec {
   private:
     double x, y, z; // internally cartesian
 
-  private:
+  public:
     Vec(double xin=0., double yin=0., double zin=0.); // Constructor
 
     // access functions
@@ -51,13 +51,23 @@ double Vec::gettheta() {
 }
 
 double Vec::dotp(Vec& v) {
-  return (this.getx()*v.getx(), this.gety()*v.gety(), this.getz()*v.getz());
+  return (this->getx()*v.getx(), this->gety()*v.gety(), this->getz()*v.getz());
 }
 
 Vec Vec::operator+(Vec& v) {
-  return Vec(this.x+v.getx(), this.y+v.gety(), this.z+v.getz());
+  return Vec(this->x+v.getx(), this->y+v.gety(), this->z+v.getz());
 }
 
 bool Vec::operator>(Vec& v) {
-  return ( this.getr() > v.getr() );
+  return ( this->getr() > v.getr() );
+}
+
+int main () {
+  Vec v1(1,1,1);
+  Vec v2;
+
+  v2 = Vec(1,0,0);
+
+  cout << v2.getx();
+
 }
